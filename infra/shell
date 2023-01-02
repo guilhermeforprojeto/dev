@@ -1,0 +1,6 @@
+foreach($user in Get-WmiObject -ComputerName ad02 -Class Win32_UserAccount -Filter "Disabled=False" | select name) {
+    $cmd="robocopy U:\ "E:\Dropbox\BKP Estrella\C\Users" /s /XD "\Downloads, "\AppData", ".ms-ad",".serpro",".signer","Ambiente de Impressão","Ambiente de Re" -f $user.name;
+    cmd.exe /c $cmd
+}
+
+robocopy U:\ "E:\Dropbox\BKP Estrella\C\Users" /s /XD "\Downloads, "", ".ms-ad",".serpro",".signer","Ambiente de Impressão","Ambiente de Rede",".AppData","*.dat","AppData","Cofre","Configurações Locais","Dados de Aplicativos","Recent","WINDOWS",".bash_history" /COPY:DT /R:0 /W:0
